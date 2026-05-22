@@ -1,188 +1,1043 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>João Victor Oliveira Mendes | Portfólio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>João Victor Oliveira Mendes — Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: oklch(98% 0.006 70);
+    --paper: oklch(99% 0.004 70);
+    --ink: oklch(22% 0.012 60);
+    --ink-soft: oklch(38% 0.012 60);
+    --ink-mute: oklch(55% 0.012 60);
+    --rule: oklch(86% 0.012 60);
+    --rule-soft: oklch(92% 0.008 60);
+    --accent: oklch(46% 0.09 35);
+    --accent-soft: oklch(46% 0.09 35 / 0.10);
+    --serif-display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+    --serif-body: "EB Garamond", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-    }
+  html[data-theme="dark"] {
+    --bg: oklch(17% 0.008 60);
+    --paper: oklch(20% 0.008 60);
+    --ink: oklch(93% 0.008 70);
+    --ink-soft: oklch(78% 0.012 70);
+    --ink-mute: oklch(60% 0.012 70);
+    --rule: oklch(32% 0.012 60);
+    --rule-soft: oklch(26% 0.012 60);
+    --accent: oklch(72% 0.10 35);
+    --accent-soft: oklch(72% 0.10 35 / 0.14);
+  }
 
-    header {
-      background: linear-gradient(90deg, #020617, #0f172a);
-      text-align: center;
-      padding: 60px 20px;
-      border-bottom: 1px solid #1e293b;
-    }
+  * { box-sizing: border-box; }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.7em;
-    }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif-body);
+    font-size: 18px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "liga", "kern";
+  }
 
-    header p {
-      color: #38bdf8;
-      margin-top: 10px;
-      font-size: 1.1em;
-    }
+  ::selection { background: var(--accent-soft); color: var(--ink); }
 
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+  a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color .2s ease, color .2s ease;
+  }
+  a:hover { border-color: var(--accent); color: var(--accent); }
 
-    h2 {
-      border-left: 4px solid #38bdf8;
-      padding-left: 10px;
-      margin-bottom: 20px;
-    }
+  /* ---------- Page chrome ---------- */
+  .page {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 56px 64px 96px;
+    position: relative;
+  }
 
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      transition: 0.3s;
-    }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .topbar .doc-id { display: flex; gap: 24px; }
+  .topbar .doc-id span { display: inline-block; }
 
-    .card:hover {
-      transform: translateY(-6px);
-      background: #334155;
-    }
+  .theme-toggle {
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink-mute);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 7px 12px 6px;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: all .2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .theme-toggle:hover { border-color: var(--ink-soft); color: var(--ink); }
+  .theme-toggle .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--ink-soft);
+    display: inline-block;
+  }
 
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
+  /* ---------- Masthead ---------- */
+  .masthead {
+    padding: 56px 0 36px;
+    border-bottom: 1px solid var(--rule);
+  }
 
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background: #38bdf8;
-      color: #020617;
-      border-radius: 8px;
-      font-weight: bold;
-    }
+  .masthead .role-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+  }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #1e293b;
-      margin-top: 40px;
-      font-size: 14px;
-      color: #94a3b8;
+  .masthead h1 {
+    font-family: var(--serif-display);
+    font-weight: 500;
+    font-size: clamp(48px, 6.8vw, 92px);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .masthead h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .masthead .tagline {
+    margin-top: 24px;
+    font-family: var(--serif-body);
+    font-size: 20px;
+    color: var(--ink-soft);
+    max-width: 640px;
+    font-style: italic;
+    text-wrap: pretty;
+  }
+
+  /* ---------- Meta strip ---------- */
+  .meta-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .meta-strip .cell {
+    padding: 22px 24px 22px 0;
+    border-right: 1px solid var(--rule);
+  }
+  .meta-strip .cell:last-child { border-right: none; padding-right: 0; }
+  .meta-strip .cell:not(:first-child) { padding-left: 24px; }
+  .meta-strip .k {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .meta-strip .v {
+    font-family: var(--serif-body);
+    font-size: 16px;
+    color: var(--ink);
+  }
+
+  /* ---------- Body grid ---------- */
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding-top: 56px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 64px;
+  }
+
+  /* ---------- Section ---------- */
+  section { margin-bottom: 0; }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .sec-head h2 {
+    margin: 0;
+    font-family: var(--serif-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 30px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .sec-head .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* Sticky left rail label — scoped per .row so labels never overlap */
+  .rail {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+    padding-top: 4px;
+  }
+  .rail .num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .rail .label {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  .rail .rule {
+    width: 32px; height: 1px; background: var(--accent);
+    margin-top: 16px;
+  }
+
+  .col { min-width: 0; }
+
+  /* ---------- Sobre ---------- */
+  .lede {
+    font-family: var(--serif-body);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 18px;
+    text-wrap: pretty;
+  }
+  .lede .drop {
+    float: left;
+    font-family: var(--serif-display);
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 0.85;
+    padding: 6px 10px 0 0;
+    color: var(--accent);
+  }
+  .col p { color: var(--ink-soft); margin: 0 0 14px; text-wrap: pretty; }
+
+  /* ---------- Habilidades ---------- */
+  .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .skill {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .skill:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--rule-soft); }
+  .skill:nth-child(even) { padding-left: 24px; }
+  .skill .name {
+    font-family: var(--serif-body);
+    font-size: 18px;
+    color: var(--ink);
+  }
+  .skill .level {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .skill .bar {
+    grid-column: 1 / -1;
+    height: 1px;
+    background: var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .skill .bar::after {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: var(--w, 60%);
+    background: var(--accent);
+  }
+
+  /* ---------- Experiência ---------- */
+  .entry {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 28px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .entry:first-of-type { padding-top: 0; }
+  .entry:last-of-type { border-bottom: none; }
+  .entry .when {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+  }
+  .entry .what h3 {
+    margin: 0 0 4px;
+    font-family: var(--serif-display);
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .entry .what .org {
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .entry ul {
+    margin: 0; padding: 0; list-style: none;
+  }
+  .entry ul li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 6px;
+    color: var(--ink-soft);
+    font-size: 17px;
+  }
+  .entry ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 12px;
+    width: 12px; height: 1px;
+    background: var(--accent);
+  }
+
+  /* ---------- Projetos ---------- */
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .proj {
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .proj .thumb {
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--rule);
+    background:
+      repeating-linear-gradient(135deg, transparent 0 12px, var(--rule-soft) 12px 13px);
+    position: relative;
+  }
+  .proj .thumb .ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .proj .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .proj h3 {
+    margin: 0;
+    font-family: var(--serif-display);
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .proj p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ---------- Formação & Certificações ---------- */
+  .ed-list { display: flex; flex-direction: column; }
+  .ed {
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
+    gap: 28px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .ed:last-child { border-bottom: none; }
+  .ed .when {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .ed .what {
+    font-family: var(--serif-display);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .ed .what .org {
+    display: block;
+    font-family: var(--serif-body);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .ed .status {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding: 4px 10px;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .ed .status.ongoing { color: var(--accent); border-color: var(--accent); }
+
+  .cert-empty {
+    border: 1px dashed var(--rule);
+    padding: 20px 24px;
+    color: var(--ink-mute);
+    font-style: italic;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  /* ---------- Contato ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .contact-grid .ci {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .contact-grid .ci:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--rule-soft); }
+  .contact-grid .ci:nth-child(even) { padding-left: 24px; }
+  .contact-grid .ci .k {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .contact-grid .ci .v {
+    font-family: var(--serif-body);
+    font-size: 19px;
+    color: var(--ink);
+  }
+  .contact-grid .ci .v a { border: none; }
+  .contact-grid .ci .v a:hover { color: var(--accent); }
+
+  /* ---------- Colophon ---------- */
+  .colophon {
+    margin-top: 80px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .ornament {
+    text-align: center;
+    color: var(--ink-mute);
+    margin: 32px 0;
+    font-family: var(--serif-display);
+    font-size: 22px;
+    letter-spacing: 0.5em;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 880px) {
+    .page { padding: 32px 24px 64px; }
+    .meta-strip { grid-template-columns: 1fr 1fr; }
+    .meta-strip .cell:nth-child(2) { border-right: none; }
+    .meta-strip .cell:nth-child(3),
+    .meta-strip .cell:nth-child(4) { border-top: 1px solid var(--rule-soft); }
+    .body { padding-top: 36px; gap: 36px; }
+    .row { grid-template-columns: 1fr; gap: 0; }
+    .rail { position: static; margin-bottom: 18px; }
+    .rail .label { font-size: 22px; }
+    .skills, .projects, .contact-grid { grid-template-columns: 1fr; }
+    .skill:nth-child(odd), .skill:nth-child(even),
+    .contact-grid .ci:nth-child(odd), .contact-grid .ci:nth-child(even) {
+      padding: 14px 0; border-right: none;
     }
-  </style>
+    .entry, .ed { grid-template-columns: 1fr; gap: 6px; }
+    .ed .status { justify-self: start; }
+  }
+
+  /* Tweaks panel */
+  #tweaks {
+    position: fixed; bottom: 20px; right: 20px;
+    width: 260px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    display: none;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  }
+  #tweaks.on { display: block; }
+  #tweaks h4 {
+    margin: 0 0 12px;
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #tweaks h4 button {
+    background: none; border: none; color: var(--ink-mute);
+    cursor: pointer; font-family: var(--mono); font-size: 14px;
+  }
+  #tweaks .row { margin-bottom: 12px; }
+  #tweaks .row > div { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+  #tweaks button.opt {
+    flex: 1; min-width: 0;
+    background: transparent;
+    border: 1px solid var(--rule);
+    color: var(--ink-mute);
+    padding: 6px 8px;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer;
+  }
+  #tweaks button.opt.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  #tweaks .swatch {
+    width: 26px; height: 26px; border-radius: 50%;
+    border: 1px solid var(--rule);
+    cursor: pointer; padding: 0;
+  }
+  #tweaks .swatch.active { outline: 2px solid var(--ink); outline-offset: 2px; }
+</style>
 </head>
-
 <body>
 
-<header>
-  <h1>João Victor Oliveira Mendes</h1>
-  <p>Suporte Técnico | Análise de Dados | SQL | Business Intelligence</p>
-</header>
+<div class="page">
 
-<section>
-  <h2>🚀 Sobre mim</h2>
-  <p>
-    Sou profissional em formação na área de Tecnologia da Informação, com experiência prática em suporte técnico,
-    administração de usuários e manutenção de ambientes corporativos.
-  </p>
-  <p>
-    Tenho interesse em análise de dados, bancos de dados, automação e Business Intelligence,
-    com conhecimentos em SQL, Python e Excel.
-  </p>
-  <p>
-    Busco oportunidades para atuar nas áreas de suporte, dados ou automação, aplicando organização,
-    resolução de problemas e aprendizado contínuo.
-  </p>
-</section>
+  <!-- TOP BAR -->
+  <header class="topbar" data-screen-label="Topbar">
+    <div class="doc-id">
+      <span>Portfólio · MMXXVI</span>
+      <span class="dim">N.º 01</span>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+      <span class="dot"></span>
+      <span id="themeLabel">Modo Escuro</span>
+    </button>
+  </header>
 
-<section>
-  <h2>🛠️ Habilidades</h2>
-  <p>• SQL</p>
-  <p>• Excel</p>
-  <p>• Active Directory</p>
-  <p>• Suporte Técnico</p>
-  <p>• Power BI</p>
-</section>
+  <!-- MASTHEAD -->
+  <section class="masthead" data-screen-label="Masthead">
+    <div class="role-tag">Suporte Técnico · Dados · Business Intelligence</div>
+    <h1>João Victor<br /><em>Oliveira Mendes</em></h1>
+    <p class="tagline">Profissional de TI em formação, dedicado à organização de ambientes corporativos, dados e automação.</p>
+  </section>
 
-<section>
-  <h2>💼 Experiência</h2>
-
-  <div class="card">
-    <h3>Estagiário de TI - Brasília Segurança S/A</h3>
-    <p>2025 - Atual</p>
-    <ul>
-      <li>Manutenção de computadores e impressoras</li>
-      <li>Gerenciamento de usuários no Active Directory</li>
-      <li>Atendimento de chamados técnicos (remoto e presencial)</li>
-      <li>Instalação e configuração de sistemas</li>
-      <li>Controle de ativos de TI</li>
-    </ul>
+  <!-- META STRIP -->
+  <div class="meta-strip">
+    <div class="cell"><span class="k">Local</span><span class="v">Brasília, DF</span></div>
+    <div class="cell"><span class="k">Função atual</span><span class="v">Estagiário de TI</span></div>
+    <div class="cell"><span class="k">Foco</span><span class="v">SQL · BI · Suporte</span></div>
+    <div class="cell"><span class="k">Disponibilidade</span><span class="v">Imediata</span></div>
   </div>
 
-</section>
+  <!-- BODY -->
+  <div class="body">
 
-<section>
-  <h2>📂 Projetos</h2>
+    <div class="row">
+      <!-- SOBRE -->
+      <aside class="rail">
+      <span class="num">I.</span>
+      <div class="label">Perfil profissional</div>
+      <div class="rule"></div>
+    </aside>
+    <div class="col">
+      <section>
+        <div class="sec-head">
+          <h2>Sobre</h2>
+          <span class="num">§ 01</span>
+        </div>
+        <p class="lede"><span class="drop">P</span>Profissional em formação na área de Tecnologia da Informação, com experiência prática em suporte técnico, administração de usuários e manutenção de ambientes corporativos.</p>
+        <p>Tenho interesse em análise de dados, bancos de dados, automação e Business Intelligence, com conhecimentos sólidos em SQL, Python e Excel aplicados a problemas reais de negócio.</p>
+        <p>Busco oportunidades para atuar nas áreas de suporte, dados ou automação, aplicando organização, resolução de problemas e aprendizado contínuo a cada entrega.</p>
+      </section>
+    </div>
 
-  <div class="card">
-   <h3>Dashboard de Vendas - Superstore</h3>
-   <p>
-  Dashboard interativo desenvolvido no Power BI para análise de desempenho
-  comercial de uma loja de varejo. Responde perguntas como: quais categorias
-  geram mais lucro? Quais subcategorias operam no prejuízo? Como as vendas
-  se comportam ao longo dos meses? Qual segmento de clientes tem maior
-  representatividade?
-  </p>
+    </div>
+
+    <div class="row">
+      <!-- HABILIDADES -->
+      <aside class="rail">
+      <span class="num">II.</span>
+      <div class="label">Competências técnicas</div>
+      <div class="rule"></div>
+    </aside>
+    <div class="col">
+      <section>
+        <div class="sec-head">
+          <h2>Habilidades</h2>
+          <span class="num">§ 02</span>
+        </div>
+        <div class="skills">
+          <div class="skill" style="--w: 78%;">
+            <span class="name">SQL</span>
+            <span class="level">Intermediário</span>
+            <div class="bar"></div>
+          </div>
+          <div class="skill" style="--w: 82%;">
+            <span class="name">Excel</span>
+            <span class="level">Avançado</span>
+            <div class="bar"></div>
+          </div>
+          <div class="skill" style="--w: 70%;">
+            <span class="name">Power BI</span>
+            <span class="level">Intermediário</span>
+            <div class="bar"></div>
+          </div>
+          <div class="skill" style="--w: 75%;">
+            <span class="name">Active Directory</span>
+            <span class="level">Intermediário</span>
+            <div class="bar"></div>
+          </div>
+          <div class="skill" style="--w: 85%;">
+            <span class="name">Suporte Técnico</span>
+            <span class="level">Avançado</span>
+            <div class="bar"></div>
+          </div>
+          <div class="skill" style="--w: 55%;">
+            <span class="name">Python</span>
+            <span class="level">Básico</span>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    </div>
+
+    <div class="row">
+      <!-- EXPERIÊNCIA -->
+      <aside class="rail">
+      <span class="num">III.</span>
+      <div class="label">Trajetória profissional</div>
+      <div class="rule"></div>
+    </aside>
+    <div class="col">
+      <section>
+        <div class="sec-head">
+          <h2>Experiência</h2>
+          <span class="num">§ 03</span>
+        </div>
+        <div class="entry">
+          <div class="when">2025 — Atual</div>
+          <div class="what">
+            <h3>Estagiário de Tecnologia da Informação</h3>
+            <div class="org">Brasília Segurança S/A</div>
+            <ul>
+              <li>Manutenção preventiva e corretiva de computadores e impressoras corporativas.</li>
+              <li>Gerenciamento de usuários, grupos e permissões em Active Directory.</li>
+              <li>Atendimento de chamados técnicos em modalidade remota e presencial.</li>
+              <li>Instalação, configuração e padronização de sistemas operacionais e softwares.</li>
+              <li>Controle e inventário de ativos de TI da organização.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    </div>
+
+    <div class="row">
+      <!-- PROJETOS -->
+      <aside class="rail">
+      <span class="num">IV.</span>
+      <div class="label">Trabalhos selecionados</div>
+      <div class="rule"></div>
+    </aside>
+    <div class="col">
+      <section>
+        <div class="sec-head">
+          <h2>Projetos</h2>
+          <span class="num">§ 04</span>
+        </div>
+        <div class="projects">
+          <article class="proj">
+            <div class="thumb"><div class="ph">Dashboard · Power BI</div></div>
+            <div class="tag">Business Intelligence</div>
+            <h3>Dashboard de Vendas — Superstore</h3>
+            <p>Dashboard interativo em Power BI para análise de desempenho comercial de uma loja de varejo — categorias mais lucrativas, subcategorias deficitárias, sazonalidade mensal e segmentação de clientes.</p>
+          </article>
+          <article class="proj">
+            <div class="thumb"><div class="ph">Modelagem · SQL</div></div>
+            <div class="tag">Banco de Dados</div>
+            <h3>Banco de Dados SQL</h3>
+            <p>Projeto de modelagem, criação e manipulação de banco de dados em SQL, com foco em normalização, integridade referencial e consultas analíticas.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    </div>
+
+    <div class="row">
+      <!-- FORMAÇÃO -->
+      <aside class="rail">
+      <span class="num">V.</span>
+      <div class="label">Formação acadêmica</div>
+      <div class="rule"></div>
+    </aside>
+    <div class="col">
+      <section>
+        <div class="sec-head">
+          <h2>Formação</h2>
+          <span class="num">§ 05</span>
+        </div>
+        <div class="ed-list">
+          <div class="ed">
+            <div class="when">2026</div>
+            <div class="what">
+              Pós-graduação em Big Data e Business Intelligence
+              <span class="org">Em andamento</span>
+            </div>
+            <div class="status ongoing">Cursando</div>
+          </div>
+          <div class="ed">
+            <div class="when">2023 — 2025</div>
+            <div class="what">
+              Análise e Desenvolvimento de Sistemas
+              <span class="org">Graduação tecnológica</span>
+            </div>
+            <div class="status">Concluído</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    </div>
+
+    <div class="row">
+      <!-- CERTIFICAÇÕES -->
+      <aside class="rail">
+      <span class="num">VI.</span>
+      <div class="label">Cursos e certificações</div>
+      <div class="rule"></div>
+    </aside>
+    <div class="col">
+      <section>
+        <div class="sec-head">
+          <h2>Certificações</h2>
+          <span class="num">§ 06</span>
+        </div>
+        <div class="ed-list" id="certList">
+          <div class="ed">
+            <div class="when">2025</div>
+            <div class="what">
+              SQL para Análise de Dados
+              <span class="org">— substitua pelo nome da instituição —</span>
+            </div>
+            <div class="status">Concluído</div>
+          </div>
+          <div class="ed">
+            <div class="when">2024</div>
+            <div class="what">
+              Fundamentos de Power BI
+              <span class="org">— substitua pelo nome da instituição —</span>
+            </div>
+            <div class="status">Concluído</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    </div>
+
+    <div class="row">
+      <!-- CONTATO -->
+      <aside class="rail">
+      <span class="num">VII.</span>
+      <div class="label">Para correspondência</div>
+      <div class="rule"></div>
+    </aside>
+    <div class="col">
+      <section>
+        <div class="sec-head">
+          <h2>Contato</h2>
+          <span class="num">§ 07</span>
+        </div>
+        <div class="contact-grid">
+          <div class="ci">
+            <span class="k">E-mail</span>
+            <span class="v"><a href="mailto:jhon.vm08@gmail.com">jhon.vm08@gmail.com</a></span>
+          </div>
+          <div class="ci">
+            <span class="k">Telefone</span>
+            <span class="v">(61) 99814-2171</span>
+          </div>
+          <div class="ci">
+            <span class="k">GitHub</span>
+            <span class="v"><a href="https://github.com/JoaoVOMendes" target="_blank" rel="noopener">JoaoVOMendes</a></span>
+          </div>
+          <div class="ci">
+            <span class="k">LinkedIn</span>
+            <span class="v"><a href="https://www.linkedin.com/in/joão-victor-oliveira-mendes-9b7055236/" target="_blank" rel="noopener">Ver perfil</a></span>
+          </div>
+        </div>
+      </section>
+    </div>
+    </div>
+
   </div>
 
-  <div class="card">
-    <h3>Banco de Dados SQL</h3>
-    <p>
-      Projeto voltado à modelagem, criação e manipulação de banco de dados utilizando SQL,
-      com foco em análise e organização de dados.
-    </p>
+  <div class="ornament">· · ·</div>
+
+  <footer class="colophon">
+    <span>© MMXXVI · João Victor Oliveira Mendes</span>
+    <span>Composto em Cormorant &amp; EB Garamond</span>
+  </footer>
+
+</div>
+
+<!-- TWEAKS -->
+<div id="tweaks" role="dialog" aria-label="Tweaks">
+  <h4>Tweaks <button id="tweaksClose" aria-label="Fechar">×</button></h4>
+  <div class="row">
+    <span>Layout</span>
+    <div data-group="layout">
+      <button class="opt" data-val="rail">Rail</button>
+      <button class="opt" data-val="flat">Liso</button>
+    </div>
   </div>
+  <div class="row">
+    <span>Acento</span>
+    <div data-group="accent">
+      <button class="swatch" data-val="rust" style="background: oklch(46% 0.09 35)"></button>
+      <button class="swatch" data-val="ink" style="background: oklch(28% 0.02 60)"></button>
+      <button class="swatch" data-val="forest" style="background: oklch(42% 0.08 145)"></button>
+      <button class="swatch" data-val="navy" style="background: oklch(38% 0.09 255)"></button>
+    </div>
+  </div>
+  <div class="row">
+    <span>Capitular</span>
+    <div data-group="drop">
+      <button class="opt" data-val="on">Com</button>
+      <button class="opt" data-val="off">Sem</button>
+    </div>
+  </div>
+</div>
 
-</section>
+<script>
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "theme": "dark",
+    "layout": "flat",
+    "accent": "navy",
+    "drop": "off"
+  }/*EDITMODE-END*/;
 
-<section>
-  <h2>🎓 Formação</h2>
-  <p>🎓 Análise e Desenvolvimento de Sistemas - Concluído (2025)</p>
-  <p>🎓 Pós-graduação em Big Data e BI - Em andamento (2026)</p>
-</section>
+  const state = { ...TWEAK_DEFAULTS };
 
-<section>
-  <h2>📞 Contato</h2>
-  <p>Email: jhon.vm08@gmail.com</p>
-  <p>Telefone: (61) 98409-7953</p>
+  // Theme
+  function applyTheme(t) {
+    document.documentElement.setAttribute("data-theme", t);
+    document.getElementById("themeLabel").textContent = t === "dark" ? "Modo Claro" : "Modo Escuro";
+  }
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    state.theme = state.theme === "dark" ? "light" : "dark";
+    applyTheme(state.theme);
+    persist({ theme: state.theme });
+  });
 
-  <p>
-    GitHub:
-    <a href="https://github.com/JoaoVOMendes" target="_blank">
-      github.com/JoaoVOMendes
-    </a>
-  </p>
+  // Layout
+  function applyLayout(l) {
+    const rows = document.querySelectorAll(".row");
+    if (l === "flat") {
+      rows.forEach(r => {
+        r.style.gridTemplateColumns = "1fr";
+        r.style.gap = "0";
+      });
+      document.querySelectorAll(".rail").forEach(r => r.style.display = "none");
+    } else {
+      rows.forEach(r => {
+        r.style.gridTemplateColumns = "";
+        r.style.gap = "";
+      });
+      document.querySelectorAll(".rail").forEach(r => r.style.display = "");
+    }
+  }
 
-  <p>
-    LinkedIn:
-    <a href="https://www.linkedin.com/in/joão-victor-oliveira-mendes-9b7055236/" target="_blank">
-      Ver perfil
-    </a>
-  </p>
-</section>
+  // Accent
+  const accents = {
+    rust:   { light: "oklch(46% 0.09 35)",  dark: "oklch(72% 0.10 35)"  },
+    ink:    { light: "oklch(28% 0.02 60)",  dark: "oklch(75% 0.02 60)"  },
+    forest: { light: "oklch(42% 0.08 145)", dark: "oklch(72% 0.10 145)" },
+    navy:   { light: "oklch(38% 0.09 255)", dark: "oklch(72% 0.10 255)" }
+  };
+  function applyAccent(a) {
+    const style = document.getElementById("accentStyle") || (() => {
+      const s = document.createElement("style"); s.id = "accentStyle"; document.head.appendChild(s); return s;
+    })();
+    const c = accents[a];
+    style.textContent = `
+      :root { --accent: ${c.light}; --accent-soft: ${c.light.replace(")", " / 0.10)")}; }
+      html[data-theme="dark"] { --accent: ${c.dark}; --accent-soft: ${c.dark.replace(")", " / 0.14)")}; }
+    `;
+  }
 
-<footer>
-  © 2026 João Victor - Portfólio Profissional
-</footer>
+  // Drop cap
+  function applyDrop(d) {
+    document.querySelectorAll(".lede .drop").forEach(el => {
+      el.style.display = d === "off" ? "none" : "";
+    });
+  }
+
+  // Init
+  applyTheme(state.theme);
+  applyLayout(state.layout);
+  applyAccent(state.accent);
+  applyDrop(state.drop);
+
+  // ---- Tweaks panel ----
+  const panel = document.getElementById("tweaks");
+
+  function syncTweakUI() {
+    panel.querySelectorAll("[data-group]").forEach(grp => {
+      const k = grp.dataset.group;
+      grp.querySelectorAll("[data-val]").forEach(b => {
+        b.classList.toggle("active", b.dataset.val === state[k]);
+      });
+    });
+  }
+
+  panel.querySelectorAll("[data-group]").forEach(grp => {
+    grp.querySelectorAll("[data-val]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const k = grp.dataset.group;
+        const v = btn.dataset.val;
+        state[k] = v;
+        if (k === "layout") applyLayout(v);
+        if (k === "accent") applyAccent(v);
+        if (k === "drop") applyDrop(v);
+        syncTweakUI();
+        persist({ [k]: v });
+      });
+    });
+  });
+
+  function persist(edits) {
+    try {
+      window.parent.postMessage({ type: "__edit_mode_set_keys", edits }, "*");
+    } catch (e) {}
+  }
+
+  // Edit mode protocol
+  window.addEventListener("message", e => {
+    if (!e.data || !e.data.type) return;
+    if (e.data.type === "__activate_edit_mode") {
+      panel.classList.add("on");
+      syncTweakUI();
+    }
+    if (e.data.type === "__deactivate_edit_mode") {
+      panel.classList.remove("on");
+    }
+  });
+
+  document.getElementById("tweaksClose").addEventListener("click", () => {
+    panel.classList.remove("on");
+    try { window.parent.postMessage({ type: "__edit_mode_dismissed" }, "*"); } catch(e) {}
+  });
+
+  try { window.parent.postMessage({ type: "__edit_mode_available" }, "*"); } catch(e) {}
+</script>
 
 </body>
 </html>
