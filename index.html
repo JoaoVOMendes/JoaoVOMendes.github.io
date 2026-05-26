@@ -216,7 +216,7 @@
     color: var(--ink-mute);
   }
 
-  /* Sticky left rail label — scoped per .row so labels never overlap */
+  /* Sticky left rail label */
   .rail {
     position: sticky;
     top: 32px;
@@ -415,6 +415,13 @@
     font-size: 16px;
     line-height: 1.5;
   }
+  .proj .proj-link {
+    margin-top: auto;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
 
   /* ---------- Formação & Certificações ---------- */
   .ed-list { display: flex; flex-direction: column; }
@@ -463,13 +470,33 @@
   }
   .ed .status.ongoing { color: var(--accent); border-color: var(--accent); }
 
-  .cert-empty {
-    border: 1px dashed var(--rule);
-    padding: 20px 24px;
+  /* ---------- Idiomas ---------- */
+  .lang-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .lang {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .lang:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--rule-soft); }
+  .lang:nth-child(even) { padding-left: 24px; }
+  .lang .lang-name {
+    font-family: var(--serif-display);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .lang .lang-level {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     color: var(--ink-mute);
-    font-style: italic;
-    font-size: 16px;
-    text-align: center;
   }
 
   /* ---------- Contato ---------- */
@@ -537,9 +564,10 @@
     .row { grid-template-columns: 1fr; gap: 0; }
     .rail { position: static; margin-bottom: 18px; }
     .rail .label { font-size: 22px; }
-    .skills, .projects, .contact-grid { grid-template-columns: 1fr; }
+    .skills, .projects, .contact-grid, .lang-list { grid-template-columns: 1fr; }
     .skill:nth-child(odd), .skill:nth-child(even),
-    .contact-grid .ci:nth-child(odd), .contact-grid .ci:nth-child(even) {
+    .contact-grid .ci:nth-child(odd), .contact-grid .ci:nth-child(even),
+    .lang:nth-child(odd), .lang:nth-child(even) {
       padding: 14px 0; border-right: none;
     }
     .entry, .ed { grid-template-columns: 1fr; gap: 6px; }
@@ -619,16 +647,16 @@
 
   <!-- MASTHEAD -->
   <section class="masthead" data-screen-label="Masthead">
-    <div class="role-tag">Suporte Técnico · Dados · Business Intelligence</div>
+    <div class="role-tag">Analista de Dados · Business Intelligence · SQL · Power BI · Excel</div>
     <h1>João Victor<br /><em>Oliveira Mendes</em></h1>
-    <p class="tagline">Profissional de TI em formação, dedicado à organização de ambientes corporativos, dados e automação.</p>
+    <p class="tagline">Profissional de TI com foco em análise de dados e Business Intelligence — combinando experiência em suporte corporativo com projetos práticos em SQL, Power BI e Excel.</p>
   </section>
 
   <!-- META STRIP -->
   <div class="meta-strip">
     <div class="cell"><span class="k">Local</span><span class="v">Brasília, DF</span></div>
-    <div class="cell"><span class="k">Função atual</span><span class="v">Estagiário de TI</span></div>
-    <div class="cell"><span class="k">Foco</span><span class="v">SQL · BI · Suporte</span></div>
+    <div class="cell"><span class="k">Cargo atual</span><span class="v">Estagiário de TI</span></div>
+    <div class="cell"><span class="k">Foco</span><span class="v">Dados · BI · SQL</span></div>
     <div class="cell"><span class="k">Disponibilidade</span><span class="v">Imediata</span></div>
   </div>
 
@@ -648,9 +676,9 @@
           <h2>Sobre</h2>
           <span class="num">§ 01</span>
         </div>
-        <p class="lede"><span class="drop">P</span>Profissional em formação na área de Tecnologia da Informação, com experiência prática em suporte técnico, administração de usuários e manutenção de ambientes corporativos.</p>
-        <p>Tenho interesse em análise de dados, bancos de dados, automação e Business Intelligence, com conhecimentos sólidos em SQL, Python e Excel aplicados a problemas reais de negócio.</p>
-        <p>Busco oportunidades para atuar nas áreas de suporte, dados ou automação, aplicando organização, resolução de problemas e aprendizado contínuo a cada entrega.</p>
+        <p class="lede"><span class="drop">P</span>rofissional de TI com formação em Análise e Desenvolvimento de Sistemas e pós-graduação em Big Data e Business Intelligence pela Universidade Católica de Brasília.</p>
+        <p>Atuo como Estagiário de TI na Brasília Segurança S/A, com experiência em suporte técnico corporativo, administração de usuários no Active Directory e gestão de ativos. Em paralelo, desenvolvo projetos práticos em SQL, Power BI e Excel voltados à análise e visualização de dados.</p>
+        <p>Busco oportunidades como Analista de Dados ou Analista de BI, onde possa aplicar pensamento analítico, organização e aprendizado contínuo para gerar valor através dos dados.</p>
       </section>
     </div>
 
@@ -697,7 +725,7 @@
           </div>
           <div class="skill" style="--w: 55%;">
             <span class="name">Python</span>
-            <span class="level">Básico</span>
+            <span class="level">Em desenvolvimento</span>
             <div class="bar"></div>
           </div>
         </div>
@@ -720,16 +748,17 @@
           <span class="num">§ 03</span>
         </div>
         <div class="entry">
-          <div class="when">2025 — Atual</div>
+          <div class="when">Jan 2025 — Atual</div>
           <div class="what">
             <h3>Estagiário de Tecnologia da Informação</h3>
             <div class="org">Brasília Segurança S/A</div>
             <ul>
-              <li>Manutenção preventiva e corretiva de computadores e impressoras corporativas.</li>
-              <li>Gerenciamento de usuários, grupos e permissões em Active Directory.</li>
-              <li>Atendimento de chamados técnicos em modalidade remota e presencial.</li>
-              <li>Instalação, configuração e padronização de sistemas operacionais e softwares.</li>
-              <li>Controle e inventário de ativos de TI da organização.</li>
+              <li>Atendimento e resolução de chamados técnicos presencial e remotamente, garantindo continuidade operacional.</li>
+              <li>Gerenciamento de usuários, grupos e permissões de acesso no Active Directory.</li>
+              <li>Instalação, configuração e padronização de sistemas operacionais e softwares corporativos.</li>
+              <li>Manutenção preventiva e corretiva de computadores, impressoras e periféricos.</li>
+              <li>Controle de estoque e inventário de ativos de TI da organização.</li>
+              <li>Solicitação e acompanhamento de compras de materiais e equipamentos de TI.</li>
             </ul>
           </div>
         </div>
@@ -756,13 +785,15 @@
             <div class="thumb"><div class="ph">Dashboard · Power BI</div></div>
             <div class="tag">Business Intelligence</div>
             <h3>Dashboard de Vendas — Superstore</h3>
-            <p>Dashboard interativo em Power BI para análise de desempenho comercial de uma loja de varejo — categorias mais lucrativas, subcategorias deficitárias, sazonalidade mensal e segmentação de clientes.</p>
+            <p>Dashboard interativo em Power BI para análise de desempenho comercial de uma loja de varejo — categorias mais lucrativas, subcategorias deficitárias, sazonalidade mensal e segmentação de clientes com medidas DAX.</p>
+            <span class="proj-link"><a href="https://github.com/JoaoVOMendes" target="_blank" rel="noopener">Ver no GitHub →</a></span>
           </article>
           <article class="proj">
             <div class="thumb"><div class="ph">Modelagem · SQL</div></div>
             <div class="tag">Banco de Dados</div>
-            <h3>Banco de Dados SQL</h3>
-            <p>Projeto de modelagem, criação e manipulação de banco de dados em SQL, com foco em normalização, integridade referencial e consultas analíticas.</p>
+            <h3>Banco de Dados Relacional</h3>
+            <p>Modelagem, criação e manipulação de banco de dados em SQL — normalização de esquema, integridade referencial, stored procedures e consultas analíticas para extração de insights.</p>
+            <span class="proj-link"><a href="https://github.com/JoaoVOMendes" target="_blank" rel="noopener">Ver no GitHub →</a></span>
           </article>
         </div>
       </section>
@@ -785,18 +816,18 @@
         </div>
         <div class="ed-list">
           <div class="ed">
-            <div class="when">2026</div>
+            <div class="when">2025 — 2026</div>
             <div class="what">
               Pós-graduação em Big Data e Business Intelligence
-              <span class="org">Em andamento</span>
+              <span class="org">Universidade Católica de Brasília</span>
             </div>
             <div class="status ongoing">Cursando</div>
           </div>
           <div class="ed">
-            <div class="when">2023 — 2025</div>
+            <div class="when">2022 — 2025</div>
             <div class="what">
-              Análise e Desenvolvimento de Sistemas
-              <span class="org">Graduação tecnológica</span>
+              Tecnólogo em Análise e Desenvolvimento de Sistemas
+              <span class="org">Grupo Projeção</span>
             </div>
             <div class="status">Concluído</div>
           </div>
@@ -824,7 +855,6 @@
             <div class="when">2025</div>
             <div class="what">
               SQL para Análise de Dados
-              <span class="org">— substitua pelo nome da instituição —</span>
             </div>
             <div class="status">Concluído</div>
           </div>
@@ -832,7 +862,6 @@
             <div class="when">2024</div>
             <div class="what">
               Fundamentos de Power BI
-              <span class="org">— substitua pelo nome da instituição —</span>
             </div>
             <div class="status">Concluído</div>
           </div>
@@ -843,9 +872,37 @@
     </div>
 
     <div class="row">
-      <!-- CONTATO -->
+      <!-- IDIOMAS -->
       <aside class="rail">
       <span class="num">VII.</span>
+      <div class="label">Idiomas</div>
+      <div class="rule"></div>
+    </aside>
+    <div class="col">
+      <section>
+        <div class="sec-head">
+          <h2>Idiomas</h2>
+          <span class="num">§ 07</span>
+        </div>
+        <div class="lang-list">
+          <div class="lang">
+            <span class="lang-name">Português</span>
+            <span class="lang-level">Nativo</span>
+          </div>
+          <div class="lang">
+            <span class="lang-name">Inglês</span>
+            <span class="lang-level">Básico — leitura técnica</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    </div>
+
+    <div class="row">
+      <!-- CONTATO -->
+      <aside class="rail">
+      <span class="num">VIII.</span>
       <div class="label">Para correspondência</div>
       <div class="rule"></div>
     </aside>
@@ -853,7 +910,7 @@
       <section>
         <div class="sec-head">
           <h2>Contato</h2>
-          <span class="num">§ 07</span>
+          <span class="num">§ 08</span>
         </div>
         <div class="contact-grid">
           <div class="ci">
@@ -870,7 +927,7 @@
           </div>
           <div class="ci">
             <span class="k">LinkedIn</span>
-            <span class="v"><a href="https://www.linkedin.com/in/joão-victor-oliveira-mendes-9b7055236/" target="_blank" rel="noopener">Ver perfil</a></span>
+            <span class="v"><a href="https://www.linkedin.com/in/jo%C3%A3o-victor-oliveira-mendes-9b7055236/" target="_blank" rel="noopener">Ver perfil</a></span>
           </div>
         </div>
       </section>
@@ -939,7 +996,7 @@
 
   // Layout
   function applyLayout(l) {
-    const rows = document.querySelectorAll(".row");
+    const rows = document.querySelectorAll(".body > .row");
     if (l === "flat") {
       rows.forEach(r => {
         r.style.gridTemplateColumns = "1fr";
